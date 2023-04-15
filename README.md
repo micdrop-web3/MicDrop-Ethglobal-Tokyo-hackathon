@@ -28,3 +28,28 @@ Lens Protocol for building a social graph and displaying metadata
 Polygon for scaling
 ENS for user account creation 
 Metamask for interacting with the dApp.
+
+
+# Installation
+To install the project dependencies, run the following command:
+
+npm i
+
+
+Next, create a .env file to connect to the testnet or mainnet. Make sure to update the necessary variables with your own values.
+
+To deploy the contract to the testnet or mainnet using Hardhat, run the following command:
+
+
+npx hardhat run scripts/deploy.js --network <testnet/mainnet>
+
+
+
+After the contract is deployed, you can get the contract address for interaction from the front end.
+
+In a separate terminal, start the server for React:
+
+npm start
+
+
+Make sure to update any necessary variables or configurations based on your specific setup.
