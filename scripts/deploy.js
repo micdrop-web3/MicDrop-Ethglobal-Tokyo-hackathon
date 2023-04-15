@@ -3,36 +3,31 @@
 //
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-const hre = require("hardhat");
+const fs = require('fs');
+const { ethers } = require('hardhat');
 
-async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+async function deploy() {
+  const [deployer] = await ethers.getSigners();
+  console.log("Deploying contracts with the account:", deployer.address);
 
-  // We get the contract to deploy
-  const Ethrtainment = await hre.ethers.getContractFactory("Ethrtainment");
-  const ethrtain = await Ethrtainment.deploy();
+  const Micdrop = await hre.ethers.getContractFactory("Micdrop"); // Replace EthrLive with Micdrop
+  const micdrop = await Micdrop.deploy(maticAddress); // Replace maticAddress with the address of the modified smart contract
 
-  await ethrtain.deployed();
+  await micdrop.deployed();
 
-  console.log("Ethrtainment deployed to:", ethrtain.address);
+  console.log("Micdrop deployed to:", micdrop.address);
 
-  const MintEvent = await hre.ethers.getContractFactory("MintEvent");
-  const mintEvent = await MintEvent.deploy(ethrtain.address);
+  // Save the contract address to a JSON file for later use
+  let addresses = {
+    micdrop: micdrop.address
+  };
 
-  await mintEvent.deployed();
-  console.log("MintEvent deployed to: ", mintEvent.address);
+  fs.writeFileSync("contract-addresses.json", JSON.stringify(addresses, null, 2));
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main()
+deploy()
   .then(() => process.exit(0))
-  .catch((error) => {
+  .catch(error => {
     console.error(error);
     process.exit(1);
   });
