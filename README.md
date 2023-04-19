@@ -3,7 +3,7 @@
 
 # MicDrop dApp
 
-working demo - interview-test-eta.vercel.app 
+working demo - (https://interview-test-eta.vercel.app/)
 
 # About
 MicDrop is a decentralized live streaming platform built on blockchain technology. The platform aims to provide a user-friendly interface that allows users to browse and search for live streamers easily. It leverages the power of blockchain technology to provide users with secure, censorship-resistant, and transparent live streaming services.
